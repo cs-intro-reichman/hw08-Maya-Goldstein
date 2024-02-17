@@ -129,6 +129,7 @@ class PlayList {
      *  is negative or too big for this list, does nothing. */
     public void remove(String title) {
         int idxOfDeleted = indexOf(title);
+        // #feedback - note that indexOf already guarantees that idxOfDeleted < this.size.
         if (idxOfDeleted != -1 && this.size != 0 && idxOfDeleted < this.size) {
             remove(idxOfDeleted);
         }
@@ -137,6 +138,7 @@ class PlayList {
     /** Removes the first track from this list. If the list is empty, does nothing. */
     public void removeFirst() {
         if (this.size > 0) {
+            // #feedback - you can use the above remove method with index 0.
             for (int i = 0; i < this.size; i++) {
                 this.tracks[i] = this.tracks[i+1];
             }
